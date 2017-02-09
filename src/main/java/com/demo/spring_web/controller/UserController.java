@@ -33,7 +33,7 @@ public class UserController {
             session.setAttribute("username", username);
             return "redirect:/home";
         }else{
-        	return "redirect:login.html";
+        	return "redirect:/login.html";
         }
         
     }
