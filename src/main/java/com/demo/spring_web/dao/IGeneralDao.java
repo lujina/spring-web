@@ -8,6 +8,8 @@ public interface IGeneralDao {
 	
 	public <T> List<T> findAll(Class<T> type);
 	
+	public List<?> find(String query, Object...values);
+	
 	public void save(Object...entities);
 	
 	public void update(Object...entities);

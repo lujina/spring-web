@@ -88,4 +88,10 @@ public class GeneralDao implements IGeneralDao {
 		hibernateTemplate.flush();
 	}
 
+	@Override
+	public List<?> find(String query, Object... values) {
+		// TODO Auto-generated method stub
+		return hibernateTemplate.find(query, values);
+	}
+
 }

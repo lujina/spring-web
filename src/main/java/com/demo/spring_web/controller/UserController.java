@@ -1,5 +1,8 @@
 package com.demo.spring_web.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +12,7 @@ import com.demo.spring_web.model.User;
 import com.demo.spring_web.service.IUserService;
 
 @Controller
-@RequestMapping(value="/user")
+@RequestMapping(value="/")
 public class UserController {
 	 /** 
      * 注入userService。 
@@ -19,11 +22,32 @@ public class UserController {
      */  
     @Autowired  
     private IUserService userService;  
-      
-    @RequestMapping(value="/registe", method=RequestMethod.GET)  
+    
+    @RequestMapping(value="/back/login", method=RequestMethod.POST)  
+    public String login(HttpServletRequest http) {  
+        String username = http.getParameter("username");
+        String password = http.getParameter("password");
+        if(userService.login(username, password)){
+        	//获取Session  
+            HttpSession session = http.getSession();  
+            session.setAttribute("username", username);
+            return "redirect:/home";
+        }else{
+        	return "redirect:login.html";
+        }
+        
+    }
+    
+    @RequestMapping(value="/back/registe", method=RequestMethod.POST)  
     public String registe() {  
         User user = new User(0, "小马云", "999");  
         userService.registe(user);  
-        return "index";  
-    }  
+        return "redirect:/home";  
+    }
+    
+    @RequestMapping(value="/home", method=RequestMethod.GET)  
+    public String home() { 
+        return "home";  
+    }
+    
 }
