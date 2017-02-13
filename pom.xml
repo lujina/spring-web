@@ -7,7 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-web Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<!-- 屬性配�?-->
+	<!-- 屬性配�? -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -25,22 +25,15 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- 添加Servlet依赖 -->
-		<!--  
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
-		-->
 		<!-- 添加Struts依赖 -->
-		<!--  
-		<dependency>
-			<groupId>org.apache.struts</groupId>
-			<artifactId>struts2-core</artifactId>
-			<version>2.5.5</version>
-		</dependency>
-		-->
+		<!-- <dependency> <groupId>org.apache.struts</groupId> <artifactId>struts2-core</artifactId> 
+			<version>2.5.5</version> </dependency> -->
 		<!-- 添加Hibernate依賴 -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -54,31 +47,14 @@
 			<version>6.0.5</version>
 		</dependency>
 		<!-- 添加Log4J依赖 -->
-		<!--  
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.6.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-nop</artifactId>
-			<version>1.6.4</version>
-		</dependency>
-		-->
+		<!-- <dependency> <groupId>log4j</groupId> <artifactId>log4j</artifactId> 
+			<version>1.2.16</version> </dependency> <dependency> <groupId>org.slf4j</groupId> 
+			<artifactId>slf4j-api</artifactId> <version>1.6.1</version> </dependency> 
+			<dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-nop</artifactId> 
+			<version>1.6.4</version> </dependency> -->
 		<!-- 添加javassit -->
-		<!-- 
-		<dependency>
-			<groupId>javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>3.11.0.GA</version>
-		</dependency>
-		-->
+		<!-- <dependency> <groupId>javassist</groupId> <artifactId>javassist</artifactId> 
+			<version>3.11.0.GA</version> </dependency> -->
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -116,13 +92,13 @@
 			<artifactId>spring-aop</artifactId>
 			<version>4.3.4.RELEASE</version>
 		</dependency>
-		<!--
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>4.3.4.RELEASE</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.8.6</version>
 		</dependency>
-		-->
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-jdbc</artifactId> 
+			<version>4.3.4.RELEASE</version> </dependency> -->
 	</dependencies>
 	<build>
 		<plugins>

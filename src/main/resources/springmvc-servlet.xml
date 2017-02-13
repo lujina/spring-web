@@ -13,8 +13,7 @@
 	<!-- 存在controller的包。注意这里写的是包名，不是类名 -->
 	<!-- 作用是扫描指定包下所有的包含注解的类 -->
 	<context:component-scan base-package="com.demo.spring_web.controller" />
-	<mvc:annotation-driven>
-	</mvc:annotation-driven>
+	<mvc:annotation-driven />
 
 	<!-- 静态文件 -->
 	<mvc:resources location="/resources/" mapping="/*.html" />

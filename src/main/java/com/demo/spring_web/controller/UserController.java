@@ -1,18 +1,18 @@
 package com.demo.spring_web.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.demo.spring_web.model.User;
 import com.demo.spring_web.service.IUserService;
+import com.demo.spring_web.util.ResponseFormat;
 
 @Controller
-@RequestMapping(value="/")
 public class UserController {
 	 /** 
      * 注入userService。 
@@ -23,17 +23,16 @@ public class UserController {
     @Autowired  
     private IUserService userService;  
     
-    @RequestMapping(value="/back/login", method=RequestMethod.POST)  
-    public String login(HttpServletRequest http) {  
-        String username = http.getParameter("username");
-        String password = http.getParameter("password");
-        if(userService.login(username, password)){
-        	//获取Session  
-            HttpSession session = http.getSession();  
-            session.setAttribute("username", username);
-            return "redirect:/home";
+    
+    @ResponseBody
+    @RequestMapping(value="/back/login", method=RequestMethod.POST)
+    public Object login(User user,HttpSession session) {
+        if(userService.login(user.getUsername(), user.getPassword())){
+        	//获取Session 
+            session.setAttribute("username", user.getUsername());
+            return ResponseFormat.getResult(0, user);
         }else{
-        	return "redirect:/login.html";
+        	return ResponseFormat.getResult(1012,null);
         }
         
     }

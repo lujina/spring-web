@@ -9,8 +9,8 @@ import com.demo.spring_web.controller.UserController;
 public class UserServiceTest {
 	@Test  
 	public void test() {
-		ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/webapp/WEB-INF/applicationContext.xml");
-		UserController controller = ctx.getBean(UserController.class);
-		controller.registe();
+//		ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/webapp/WEB-INF/applicationContext.xml");
+//		UserController controller = ctx.getBean(UserController.class);
+//		controller.registe();
 	}
 }

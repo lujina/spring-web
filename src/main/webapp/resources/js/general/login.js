@@ -1,28 +1,36 @@
 define(function(require,exports,module) {
-	require("../../plugins/jQuery/jQuery-2.1.4.min.js");
 	require("../../plugins/ajaxform/jquery.form.js");
 	require("../../bootstrap/js/bootstrap.min.js");
 	require("../../plugins/iCheck/icheck.min.js");
 
-	exports.init = function(){
-		$('input').iCheck({
+	function renderDom(){
+		$('#remember_me').iCheck({
           checkboxClass: 'icheckbox_square-blue',
           radioClass: 'iradio_square-blue',
           increaseArea: '20%' // optional
         });
-        $('#login').ajaxform({
+	}
+	function formEvent(){
+		$('#login').ajaxForm({
         	success: function(data) {
-				if (data.errorNo == 0) {
-					window.location.href="home";
-				} else {
-					alert("登陆失败");
-				}
+        		if(data.status==0){
+        			window.location.href='home';
+        		}else{
+        			$('.alert').find('strong').html(data.msg);
+        			$('#warning_block').prop('hidden',false);
+        		}
+				
 			},
 			error: function() {
-				alert("提交失败");
+				$('.alert').find('strong').html('提交信息失败，请联系管理员');
+				$('#warning_block').prop('hidden',false);
 			},
 			setTimeout: 3000
         });
+	}
+	exports.init = function(){
+		renderDom();
+        formEvent();
 	};
 
 });

@@ -29,6 +29,9 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">欢迎来到权限管理系统</p>
+        <div class="alert alert-warning" id="warning_block" hidden>
+          <strong></strong>
+        </div>
         <form action="back/login" method="post" id="login">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Full name" name="username"/>
@@ -42,7 +45,7 @@
             <div class="col-xs-8">    
               <div class="checkbox icheck">
                 <label>
-                  <input type="checkbox"> 记住我
+                  <input type="checkbox" id="remember_me"> 记住我
                 </label>
               </div>                        
             </div><!-- /.col -->
@@ -59,6 +62,7 @@
     </div><!-- /.login-box -->
 
     <script src="res/js/sea.js"></script>
+    <script src="res/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <script>
     	seajs.use("general/login",function(loginControl){
 	        loginControl.init();
