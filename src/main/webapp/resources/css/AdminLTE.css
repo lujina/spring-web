@@ -4360,3 +4360,7 @@ fieldset[disabled] .btn-vk.active {
     white-space: normal!important;
   }
 }
+/*validation*/
+label.error {
+  color: #dd4b39;
+}

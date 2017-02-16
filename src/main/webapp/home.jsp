@@ -203,7 +203,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="logout" class="btn btn-default btn-flat">Sign out</a>
                     </div>
                   </li>
                 </ul>
@@ -249,10 +249,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class='fa fa-link'></i> <span>Link</span></a></li>
-            <li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>
+            <li class="active"><a href="homepage.html"><i class='fa fa-link'></i> <span>主页</span></a></li>
+            <li class="treeview-menu"><a href="#"><i class='fa fa-link'></i> <span>公共信息</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="#">Link in level 2</a></li>
+                <li><a href="#">Link in level 2</a></li>
+              </ul>
+            </li>
             <li class="treeview">
-              <a href="#"><i class='fa fa-link'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <a href="#"><i class='fa fa-link'></i> <span>个人信息</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="emailpage">Link in level 2</a></li>
+                <li><a href="#">Link in level 2</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#"><i class='fa fa-link'></i> <span>课程信息</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="#">Link in level 2</a></li>
                 <li><a href="#">Link in level 2</a></li>

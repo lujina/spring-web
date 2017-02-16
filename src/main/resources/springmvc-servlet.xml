@@ -13,7 +13,15 @@
 	<!-- 存在controller的包。注意这里写的是包名，不是类名 -->
 	<!-- 作用是扫描指定包下所有的包含注解的类 -->
 	<context:component-scan base-package="com.demo.spring_web.controller" />
-	<mvc:annotation-driven />
+	<mvc:annotation-driven>
+		<!-- srping3.2以上的json配置方式 -->
+		<!-- 
+		<mvc:message-converters register-defaults="false">
+			<ref bean="stringUtil" />
+		</mvc:message-converters>
+		 -->
+	</mvc:annotation-driven>
+
 
 	<!-- 静态文件 -->
 	<mvc:resources location="/resources/" mapping="/*.html" />
@@ -25,13 +33,19 @@
 		<property name="prefix" value="/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-	<!-- 拦截器 -->
-	<mvc:interceptors>
-		<!-- 多个拦截器，顺序执行 -->
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<mvc:exclude-mapping path="/res/**"/>
-			<bean class="com.demo.spring_web.interceptor.LoginInterceptor"></bean>
-		</mvc:interceptor>
-	</mvc:interceptors>
+	<!-- 
+	<bean id="stringUtil"
+		class="org.springframework.http.converter.StringHttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+				<value>text/plain;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	 -->
+	<!-- 拦截器,多个拦截器，顺序执行 -->
+	<!-- <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/**" /> <mvc:exclude-mapping 
+		path="/res/**"/> <bean class="com.demo.spring_web.interceptor.LoginInterceptor"></bean> 
+		</mvc:interceptor> </mvc:interceptors> -->
 </beans>  

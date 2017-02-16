@@ -11,7 +11,7 @@
     <!-- Font Awesome Icons -->
     <link href="res/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
-    <link href="res/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+    <link href="res/css/AdminLTE.css" rel="stylesheet" type="text/css" />
     <!-- iCheck -->
     <link href="res/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
 
@@ -29,10 +29,10 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">欢迎来到权限管理系统</p>
-        <div class="alert alert-warning" id="warning_block" hidden>
+        <div class="alert alert-error" id="warning_block" hidden>
           <strong></strong>
         </div>
-        <form action="back/login" method="post" id="login">
+        <form action="login" method="post" id="login">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Full name" name="username"/>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -45,7 +45,7 @@
             <div class="col-xs-8">    
               <div class="checkbox icheck">
                 <label>
-                  <input type="checkbox" id="remember_me"> 记住我
+                  <input type="checkbox" id="remember_me" name="remember_me"> 记住我
                 </label>
               </div>                        
             </div><!-- /.col -->

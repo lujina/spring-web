@@ -21,7 +21,7 @@ define(function(require,exports,module) {
         		}
 				
 			},
-			error: function() {
+			error: function(data) {
 				$('.alert').find('strong').html('提交信息失败，请联系管理员');
 				$('#warning_block').prop('hidden',false);
 			},

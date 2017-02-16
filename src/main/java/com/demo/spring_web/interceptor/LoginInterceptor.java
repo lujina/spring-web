@@ -34,7 +34,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         String url = request.getRequestURI();  
         System.out.println("request url: "+url);
         //URL:login.html是公开的;这个demo是除了login.html和register.html是可以公开访问的，其它的URL都进行拦截控制  
-        if(url.indexOf("login")>=0){  
+        if(url.indexOf("login")>=0 || url.indexOf("registe")>=0){  
             return true;  
         }  
       //获取Session  

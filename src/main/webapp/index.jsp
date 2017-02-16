@@ -7,6 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
   <head>
-  	<meta http-equiv="refresh"  content="0; URL=home">
+  	 <meta http-equiv="refresh"  content="0; URL=home">
   </head>
+  <!-- <body>测试</body> -->
 </html>

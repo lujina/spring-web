@@ -7,6 +7,7 @@ import com.demo.spring_web.service.IUserService;
 
 import java.util.ArrayList;
 
+import org.hibernate.Criteria;
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.stereotype.Service;  
 import org.springframework.transaction.annotation.Transactional;  
@@ -34,5 +35,11 @@ public class UserService implements IUserService {
 				+ "and u.password=?", new String[]{username,password});
 		return list.size() > 0;
 	}
-
+	
+	@Transactional
+	public User findByName(String username){
+		ArrayList<Object> list = (ArrayList<Object>) generalDao.find("from User u where u.username=? "
+				, new String[]{username});
+		return (User) list.get(0);
+	}
 }
