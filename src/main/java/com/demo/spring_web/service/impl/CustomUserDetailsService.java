@@ -12,17 +12,18 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.demo.spring_web.model.Role;
 import com.demo.spring_web.model.User;
-import com.demo.spring_web.service.IRoleService;
 import com.demo.spring_web.service.IUserService;
-
+/**
+ * 实现spring security中的UserDetailsService。用于spring安全配置，例如登陆拦截和权限管理
+ * @author Administrator
+ *
+ */
 @Service("CustomUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
 	@Autowired
 	private IUserService userService;
-	
-//	@Autowired
-//	private IRoleService roleService;
 	
 	@Override
 	@Transactional
@@ -40,12 +41,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 	
 	private List<GrantedAuthority> getGrantedAuthorities(User user){
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_"+"USER"));
-//        List<Role> roles=roleService.findAll(); 
-//        for(Role role : roles){
-//            System.out.println("UserRole : "+role);
-//            authorities.add(new SimpleGrantedAuthority("ROLE_"+"User"));
-//        }
+//        authorities.add(new SimpleGrantedAuthority("ROLE_"+"USER"));
+        for(Role role : user.getRoles()){
+            System.out.println("Role : " + role);
+            authorities.add(new SimpleGrantedAuthority("ROLE_"+role.getRole_name()));
+        }
         System.out.print("authorities :"+authorities);
         return authorities;
     }

@@ -9,10 +9,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
+/**
+ * 持久登陆
+ * @author Administrator
+ *
+ */
 @Entity
 @Table(name = "persistent_logins")
 public class PersistentLogin implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private String series;
 

@@ -64,11 +64,12 @@ public class UserController {
     
     /**
      * This method handles Access-Denied redirect.
+     * 没有权限，访问被拒绝
+     * 在前端重新发出加载403页面的请求
      */
-    @ResponseBody
     @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
-    public Object accessDeniedPage() {
-        return ResponseFormat.getResult(0, getPrincipal());
+    public String accessDeniedPage() {
+    	return "redirect:/403.html";
     }
     /**
      * This method returns the principal[user-name] of logged-in user.

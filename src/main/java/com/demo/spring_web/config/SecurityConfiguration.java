@@ -1,5 +1,6 @@
 package com.demo.spring_web.config;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -16,8 +17,8 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
- * 
- * 用户登陆控制、rememberme功能，以及权限控制
+ * spring安全配置
+ * 用户登陆控制、remember-me功能，以及权限控制
  * 
  * @author Administrator
  *
@@ -40,8 +41,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/res/**", "/back/**", "/register.html").permitAll().anyRequest()
-				.hasRole("USER").anyRequest().authenticated().and().exceptionHandling()
+		http.authorizeRequests().antMatchers("/res/**", "/back/**", "/register.html").permitAll()
+				.antMatchers("/mailbox.html").access("hasRole('ADMIN')")
+				.anyRequest().hasRole("USER").anyRequest().authenticated().and().exceptionHandling()
 				.accessDeniedPage("/Access_Denied");
 		http.formLogin().loginPage("/login.html").loginProcessingUrl("/login").defaultSuccessUrl("/login/success", true)
 				.failureUrl("/login/error").permitAll().and().rememberMe().rememberMeParameter("remember_me")

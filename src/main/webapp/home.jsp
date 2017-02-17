@@ -26,7 +26,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           apply the skin class to the body tag so the changes take effect.
     -->
     <link href="res/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css" />
-
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -249,7 +249,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="homepage.html"><i class='fa fa-link'></i> <span>主页</span></a></li>
+            <li id="homepage" class="active"><a href="#/homepage"><i class='fa fa-link'></i> <span>主页</span></a></li>
             <li class="treeview-menu"><a href="#"><i class='fa fa-link'></i> <span>公共信息</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="#">Link in level 2</a></li>
@@ -259,8 +259,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="treeview">
               <a href="#"><i class='fa fa-link'></i> <span>个人信息</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="emailpage">Link in level 2</a></li>
-                <li><a href="#">Link in level 2</a></li>
+                <li id="mailbox"><a href="#/mailbox">邮箱</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -276,25 +275,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </aside>
 
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Page Header
-            <small>Optional description</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-            <li class="active">Here</li>
-          </ol>
-        </section>
-
-        <!-- Main content -->
-        <section class="content">
-
-          <!-- Your Page Content Here -->
-
-        </section><!-- /.content -->
+      <div class="content-wrapper" id="page-content">
+       
       </div><!-- /.content-wrapper -->
 
       <!-- Main Footer -->
@@ -373,16 +355,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- REQUIRED JS SCRIPTS -->
 
-    <!-- jQuery 2.1.4 -->
+    <script src="res/js/sea.js"></script>
     <script src="res/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="res/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- AdminLTE App -->
     <script src="res/js/app.min.js" type="text/javascript"></script>
-
-    <!-- Optionally, you can add Slimscroll and FastClick plugins.
-          Both of these plugins are recommended to enhance the
-          user experience. Slimscroll is required when using the
-          fixed layout. -->
+    <script>
+      seajs.use("general/home",function(mainControl){
+          mainControl.init();
+      });
+    </script>
   </body>
 </html>
