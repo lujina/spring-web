@@ -1,5 +1,6 @@
 package com.demo.spring_web.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ public class User implements Serializable {
 	 * 多对多建立中间表
 	 * fetchType.EAGER : 急加载
 	 */
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "role_id") })
 	private Set<Role> roles = new HashSet<Role>();

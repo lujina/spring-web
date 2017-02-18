@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * 
  * @author Administrator
- * 使用拦截器进行登陆验证
+ * 使用拦截器进行登陆拦截
  */
 public class LoginInterceptor implements HandlerInterceptor {
 

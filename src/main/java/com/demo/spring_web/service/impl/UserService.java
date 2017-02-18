@@ -1,6 +1,7 @@
 package com.demo.spring_web.service.impl;
 
 import com.demo.spring_web.dao.IGeneralDao;
+import com.demo.spring_web.model.Role;
 import com.demo.spring_web.model.User;
 import com.demo.spring_web.service.IUserService;
 
@@ -24,6 +25,9 @@ public class UserService implements IUserService {
     @Transactional(readOnly=false)  
 	public boolean registe(User user) {
 		// TODO Auto-generated method stub
+		// 为新建的用户添加USER权限
+		Role role = generalDao.findById(Role.class, 1);
+		user.getRoles().add(role);
 		generalDao.save(user);
 		return false;
 	}

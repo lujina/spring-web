@@ -26,7 +26,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           apply the skin class to the body tag so the changes take effect.
     -->
     <link href="res/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css" />
-    
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -263,7 +263,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </ul>
             </li>
             <li class="treeview">
-              <a href="#"><i class='fa fa-link'></i> <span>课程信息</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <a href="#"><i class='fa fa-link'></i> <span>权限管理</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="#">Link in level 2</a></li>
                 <li><a href="#">Link in level 2</a></li>
