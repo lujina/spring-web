@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>  
-<beans xmlns="http://www.springframework.org/schema/beans"  
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"  
-    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"  
-    xsi:schemaLocation="  
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="  
          http://www.springframework.org/schema/beans  
          http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
          http://www.springframework.org/schema/context  
@@ -10,51 +10,51 @@
          http://www.springframework.org/schema/aop    
          http://www.springframework.org/schema/aop/spring-aop-4.0.xsd    
          http://www.springframework.org/schema/tx    
-         http://www.springframework.org/schema/tx/spring-tx.xsd">  
-  
-    <!-- 自动扫面注解包 -->  
-    <context:annotation-config />  
-    <context:component-scan base-package="com.demo.spring_web.*" />  
-  
-    <!-- 数据源 -->  
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  
-        destroy-method="close">  
-        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/demo?serverTimezone=UTC"></property>
+         http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- 自动扫面注解包 -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.demo.spring_web.*" />
+
+	<!-- 数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/demo?serverTimezone=UTC"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="mysql1024"></property>
-    </bean>  
-  
-    <!-- 配置sessionFactory -->  
-    <bean id="sessionFactory"  
-        class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">  
-        <property name="dataSource" ref="dataSource" />  
-        <property name="packagesToScan" value="com.demo.spring_web.model" /><!-- 实体类的包 -->  
-        <property name="hibernateProperties">  
-            <props>  
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>  
-                <prop key="hibernate.show_sql">true</prop>  
-                <!-- 会自动创表，但是不会自动创建数据库，所以要先手动创建数据库。 -->  
-                <prop key="hibernate.hbm2ddl.auto">update</prop>  
-                <prop key="hibernate.format_sql">true</prop> 
-            </props>  
-        </property>  
-    </bean>  
-  
-    <!-- 用于注入到GeneralDao中 -->  
-    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">  
-        <property name="sessionFactory" ref="sessionFactory" />  
-    </bean>  
-  
-    <!-- 配置事务管理 -->  
-    <bean id="transactionManager"  
-        class="org.springframework.orm.hibernate5.HibernateTransactionManager">  
-        <property name="sessionFactory" ref="sessionFactory" />  
-    </bean> 
-     
- 
-    <!-- 开启事务管理注解 -->  
-    <aop:aspectj-autoproxy />  
-    <tx:annotation-driven />  
-  
+	</bean>
+
+	<!-- 配置sessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="com.demo.spring_web.model" /><!-- 
+			实体类的包 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<!-- 会自动创表，但是不会自动创建数据库，所以要先手动创建数据库。 -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 用于注入到GeneralDao中 -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 配置事务管理 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- 开启事务管理注解 -->
+	<aop:aspectj-autoproxy />
+	<tx:annotation-driven />
+
 </beans>  
