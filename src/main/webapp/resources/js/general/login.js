@@ -28,9 +28,15 @@ define(function(require,exports,module) {
 			setTimeout: 3000
         });
 	}
-	exports.init = function(){
-		renderDom();
-        formEvent();
-	};
+	module.exports = {
+		init:function(){
+			renderDom();
+        	formEvent();
+		}
+	}
+	// exports.init = function(){
+	// 	renderDom();
+ //        formEvent();
+	// };
 
 });
