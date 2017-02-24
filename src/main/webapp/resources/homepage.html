@@ -1,3 +1,7 @@
+ <head>
+    <!-- iCheck -->
+    <link href="res/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
+ </head>
  <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
@@ -14,5 +18,11 @@
 <section class="content">
 
   this is homepage!!
+  <input type="checkbox" id="remember_me" name="remember_me"> 记住我
 
 </section><!-- /.content -->
+<script type="text/javascript">
+	seajs.use("./res/js/general/homepage",function(homepageControl){
+        homepageControl.init();
+    });
+</script>

@@ -259,7 +259,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="treeview">
               <a href="#"><i class='fa fa-link'></i> <span>个人信息</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li id="mailbox"><a href="#/mailbox">邮箱</a></li>
+                <li id="setting"><a href="#/setting">设置</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -356,8 +356,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- REQUIRED JS SCRIPTS -->
 
-    <script src="res/js/sea.js"></script>
-    <script src="res/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="res/js/sea.js" type="text/javascript"></script>
+    <script src="res/plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="res/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- AdminLTE App -->

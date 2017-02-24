@@ -1,0 +1,31 @@
+<head>
+ </head>
+ <!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    设置
+    <small>欢迎</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>个人信息</li>
+    <li>设置</li>
+    <li >Here</li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <div class="box box-default color-palette-box" id = "personalInfo">
+    <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-tag"></i>{{userName}}</h3>
+    </div>
+    <div class="box-body">
+          
+    </div>
+  </div>
+</section><!-- /.content -->
+<script type="text/javascript">
+  seajs.use("./res/js/general/setting",function(settingControl){
+        settingControl.init();
+    });
+</script>

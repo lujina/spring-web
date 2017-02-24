@@ -38,8 +38,8 @@ define(function(require,exports,module) {
 	exports.init = function(){
 		R.route('/homepage',function(){
 			$('#page-content').load('homepage.html');
-		}).route('/mailbox',function(){
-			$('#page-content').load('mailbox.html');
+		}).route('/setting',function(){
+			$('#page-content').load('setting.html');
 		});
 	};
 
