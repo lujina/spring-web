@@ -1,5 +1,7 @@
 package com.demo.spring_web.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Privilege {
+public class Privilege implements Serializable{
 	@Id
 	@GeneratedValue
 	private int id;

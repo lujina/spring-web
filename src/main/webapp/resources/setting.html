@@ -1,5 +1,44 @@
 <head>
- </head>
+    <link href="res/plugins/cropper/cropper.css" rel="stylesheet" type="text/css">
+    <style>
+    /* Wrap the image or canvas element with a block element (container) */
+    .container {
+      max-width: 300px;
+      max-height: 300px;
+      margin: 20px auto;
+    }
+   /* Limit image width to avoid overflow the container */
+    img {
+      max-width: 100%;
+    }
+  /* 修改图像input样式*/
+    .file {
+        position: relative;
+        display: inline-block;
+        background: #D0EEFF;
+        border: 1px solid #99D3F5;
+        border-radius: 4px;
+        padding: 4px 12px;
+        overflow: hidden;
+        color: #1E88C7;
+        text-decoration: none;
+        text-indent: 0;
+        line-height: 20px;
+    }
+    .file input {
+        position: absolute;
+        font-size: 100px;
+        right: 0;
+        top: 0;
+        opacity: 0;
+    }
+    .file:hover {
+        background: #AADFFD;
+        border-color: #78C3F3;
+        color: #004974;
+        text-decoration: none;
+    }
+  </style>
  <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
@@ -17,15 +56,56 @@
 <section class="content">
   <div class="box box-default color-palette-box" id = "personalInfo">
     <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-tag"></i>{{userName}}</h3>
+              <h3 class="box-title"></h3>
     </div>
-    <div class="box-body">
-          
-    </div>
+    <form role="form" action="back/user/update" method="post" >
+        <div class="box-body">
+          <div class="form-group col-md-5">
+            <div class="container">
+              <img id="preview" alt="your image" src="res/img/user2-160x160.jpg"/></br>
+              <a href="javascript:;" class="file">更改头像<input type="file" name="" id="imgInp"></a>
+              <div id="cropping"></div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="form-group">
+              <label for="username">昵 称</label>
+              <input type="text" class="form-control" name="username" readonly>
+            </div>
+            <div class="form-group">
+              <label for="email">邮 件</label>
+              <input type="email" class="form-control" name="email" readonly>
+            </div>
+            <div class="form-group">
+              <label><a href="javascript:;" name="passwordBtn">修改密码</a></label>
+            </div>
+          </div>
+        </div><!-- /.box-body -->
+
+        <div class="box-footer col-md-offset-5">
+          <button type="button" class="btn btn-primary" name="edit">修改</button>
+          <button type="submit" class="btn btn-primary" name="save" style="display:none;">保存</button>
+          <button type="button" class="btn btn-default" name="cancel" style="display:none;">取消</button>
+        </div>
+    </form>
   </div>
 </section><!-- /.content -->
 <script type="text/javascript">
   seajs.use("./res/js/general/setting",function(settingControl){
         settingControl.init();
     });
+</script>
+<script type="text/template" id = "resetPassword">
+  <div class="form-group pr">
+    <label for="exampleInputPassword1">旧密码</label>
+    <input type="password" class="form-control pr" name="oldPassword" placeholder="Old Password">
+  </div>
+  <div class="form-group pr">
+    <label for="exampleInputPassword1">新密码</label>
+    <input type="password" class="form-control" name="password" id="password" placeholder="New Password">
+  </div>
+  <div class="form-group pr">
+    <label for="exampleInputPassword1">再次输入</label>
+    <input type="password" class="form-control" name="password_again" placeholder="Retype password">
+  </div>
 </script>

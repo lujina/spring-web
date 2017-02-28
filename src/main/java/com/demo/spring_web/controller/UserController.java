@@ -35,6 +35,26 @@ public class UserController {
 //    }
     
     @ResponseBody
+    @RequestMapping(value="/back/user/info",method=RequestMethod.GET)
+    public Object queryInfo(HttpServletRequest request) {
+    	User user = userService.findByName(getPrincipal());
+    	return ResponseFormat.getResult(0, user);
+        
+    }
+    
+    @ResponseBody
+    @RequestMapping(value="/back/user/update", method=RequestMethod.POST)
+    public Object update(User u2) {
+    	User u1 = userService.findByName(getPrincipal());
+    	u1.setEmail(u2.getEmail());
+    	if(u2.getPassword() != null){
+    		u1.setPassword(u2.getPassword());
+    	};
+    	userService.update(u1);
+    	return ResponseFormat.getResult(0,u1);        
+    }
+    
+    @ResponseBody
     @RequestMapping(value="/login/success",method=RequestMethod.GET)
     public Object loginSucc(HttpServletRequest request) {
     	return ResponseFormat.getResult(0, null);

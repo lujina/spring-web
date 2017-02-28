@@ -5,4 +5,5 @@ public interface IUserService {
 	public boolean registe(User user);
 	public boolean login(String username, String password);
 	public User findByName(String username);
+	public boolean update(User user);
 }

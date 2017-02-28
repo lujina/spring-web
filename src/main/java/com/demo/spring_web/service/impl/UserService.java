@@ -21,7 +21,7 @@ public class UserService implements IUserService {
 	/*  
      * 这里要有事务注解，默认readOnly=true,不设置的话会报错。 
      * insert和update操作都要。 
-     */  
+     */
     @Transactional(readOnly=false)  
 	public boolean registe(User user) {
 		// TODO Auto-generated method stub
@@ -31,7 +31,12 @@ public class UserService implements IUserService {
 		generalDao.save(user);
 		return false;
 	}
-	
+	@Transactional(readOnly=false)  
+	public boolean update(User user) {
+		// TODO Auto-generated method stub
+		generalDao.update(user);
+		return false;
+	}
 	@Transactional
 	public boolean login(String username, String password){
 		//count(1)和count(*)在执行上有什么区别，哪个效率会更高

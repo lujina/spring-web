@@ -73,7 +73,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.tokenRepository(tokenRepository).tokenValiditySeconds(86400).and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET")).logoutSuccessUrl("/login.html")
 				.permitAll();
-		http.csrf().ignoringAntMatchers("/login");
+		http.csrf().ignoringAntMatchers("/login","/back/**");
 		
 
 	}

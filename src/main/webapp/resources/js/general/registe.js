@@ -11,7 +11,7 @@ define(function(require,exports,module) {
           increaseArea: '20%' // optional
         });
 	}
-	function formEvent(){
+	function initFormEvent(){
         //设置错误信息提示的位置
         jQuery.validator.setDefaults({
             errorPlacement: function(error, element) {
@@ -57,7 +57,7 @@ define(function(require,exports,module) {
 	}
 	exports.init = function(){
 		renderDom();
-        formEvent();
+        initFormEvent();
 	};
 
 });
