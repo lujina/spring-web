@@ -100,10 +100,10 @@ public class UserController {
         return ResponseFormat.getResult(0, user);  
     }
     
-    @RequestMapping(value="/index", method=RequestMethod.GET)  
+    @RequestMapping(value="/home", method=RequestMethod.GET)  
     public String home(HttpSession session) {
     	session.setAttribute("username", getPrincipal());
-        return "index";  
+        return "home";  
     }
   
     

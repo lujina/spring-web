@@ -17,7 +17,7 @@ define(function(require,exports,module) {
 		$('#login').ajaxForm({
         	success: function(data) {
         		if(data.status==0){
-        			window.location.href='index';
+        			window.location.href='home';
         		}else{
         			$('.alert').find('strong').html(data.msg);
         			$('#warning_block').prop('hidden',false);
