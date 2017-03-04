@@ -7,12 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.demo.spring_web.model.FileDto;
 import com.demo.spring_web.model.User;
+import com.demo.spring_web.service.IFileService;
 import com.demo.spring_web.service.IUserService;
 import com.demo.spring_web.util.ResponseFormat;
 
@@ -20,6 +23,9 @@ import com.demo.spring_web.util.ResponseFormat;
 public class UserController {
     @Autowired  
     private IUserService userService; 
+    
+    @Autowired
+    private IFileService fileService;
     
 //    @ResponseBody
 //    @RequestMapping(value="/back/login", method=RequestMethod.POST)
@@ -55,6 +61,25 @@ public class UserController {
     }
     
     @ResponseBody
+    @RequestMapping(value="/back/user/uploadImg", method=RequestMethod.POST)
+    public Object saveImg(@RequestParam(value = "userImg", required = false)MultipartFile img,
+    		@RequestParam(value = "userId", required = false) Integer id) {
+    	FileDto fileDto = null;
+    	try {
+			 fileDto = fileService.uploadFile(img);
+			 User user = userService.findByName(getPrincipal());
+			 user.setUserimg(fileDto.getFileFullUrl());
+			 userService.update(user);
+			 return ResponseFormat.getResult(0,fileDto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ResponseFormat.getResult(1000,null);  
+		}
+    	      
+    }
+    
+    @ResponseBody
     @RequestMapping(value="/login/success",method=RequestMethod.GET)
     public Object loginSucc(HttpServletRequest request) {
     	return ResponseFormat.getResult(0, null);
@@ -75,10 +100,10 @@ public class UserController {
         return ResponseFormat.getResult(0, user);  
     }
     
-    @RequestMapping(value="/home", method=RequestMethod.GET)  
+    @RequestMapping(value="/index", method=RequestMethod.GET)  
     public String home(HttpSession session) {
     	session.setAttribute("username", getPrincipal());
-        return "home";  
+        return "index";  
     }
   
     
@@ -95,14 +120,14 @@ public class UserController {
      * This method returns the principal[user-name] of logged-in user.
      */
     private String getPrincipal(){
-        String userName = null;
+        String username = null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
  
         if (principal instanceof UserDetails) {
-            userName = ((UserDetails)principal).getUsername();
+            username = ((UserDetails)principal).getUsername();
         } else {
-            userName = principal.toString();
+            username = principal.toString();
         }
-        return userName;
+        return username;
     }
 }

@@ -60,12 +60,18 @@
     </div>
     <form role="form" action="back/user/update" method="post" >
         <div class="box-body">
-          <div class="form-group col-md-5">
-            <div class="container">
-              <img id="preview" alt="your image" src="res/img/user2-160x160.jpg"/></br>
-              <a href="javascript:;" class="file">更改头像<input type="file" name="" id="imgInp"></a>
-              <div id="cropping"></div>
-            </div>
+          <div class="col-md-5">
+              <div class="form-group col-md-offset-5"> 
+                <img id="preview" alt="User Image" src="res/img/user2-160x160.jpg"/></br>
+                <a href="javascript:void(0);" class="file">更改头像<input type="file"  class="form-control" id="imgInp"></a>
+              </div>
+              <div class="form-group">
+                <div class="container" id="cropperContainer">
+                  <div id="cropping" style="height:50em"></div>
+                  <button type="button" class="file">确定并上传</button>
+                  <button type="button" class="file" style="background:#f4f4f4;">取消</button>
+                </div> 
+              </div>
           </div>
           <div class="col-md-7">
             <div class="form-group">

@@ -26,6 +26,8 @@ public class User implements Serializable {
 	private String username;
 	private String password;
 	private String email;
+	private String userimg;
+
 	/**
 	 * 多对多建立中间表
 	 * fetchType.EAGER : 急加载
@@ -86,6 +88,14 @@ public class User implements Serializable {
 		this.roles = roles;
 	}
 
+	public String getUserimg() {
+		return userimg;
+	}
+
+	public void setUserimg(String userimg) {
+		this.userimg = userimg;
+	}
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";

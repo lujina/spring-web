@@ -23,7 +23,7 @@ public class RestExceptionHandler {
     @ExceptionHandler(RuntimeException.class)  
     @ResponseBody  
     public Object runtimeExceptionHandler(RuntimeException runtimeException) {  
-
+    	runtimeException.printStackTrace();
         return ResponseFormat.getResult(1000, null);
     }  
     //空指针异常
