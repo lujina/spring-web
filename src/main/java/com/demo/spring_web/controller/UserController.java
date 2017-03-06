@@ -68,6 +68,7 @@ public class UserController {
     	try {
 			 fileDto = fileService.uploadFile(img);
 			 User user = userService.findByName(getPrincipal());
+			 fileService.removeFile(user.getUserimg());
 			 user.setUserimg(fileDto.getFileFullUrl());
 			 userService.update(user);
 			 return ResponseFormat.getResult(0,fileDto);
@@ -102,7 +103,9 @@ public class UserController {
     
     @RequestMapping(value="/home", method=RequestMethod.GET)  
     public String home(HttpSession session) {
-    	session.setAttribute("username", getPrincipal());
+    	User user = userService.findByName(getPrincipal());
+    	session.setAttribute("username", user.getUsername());
+    	session.setAttribute("userimgurl", user.getUserimg());
         return "home";  
     }
   

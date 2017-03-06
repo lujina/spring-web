@@ -13,13 +13,13 @@ import com.demo.spring_web.util.StringUtils;
 
 @Service
 public class FileService implements IFileService {
+	private String basePath = "D:\\";
+	private String url = "/upload/";
 
 	@Override
 	public FileDto uploadFile(MultipartFile file) throws Exception {
 		// TODO Auto-generated method stub
 		if(!file.isEmpty()){
-			String basePath = "D:\\";
-			String url="/upload/";
 			Date date = new Date();
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
 			// 服务器上的用户相对路径，格式为userimage/日期/文件.
@@ -52,6 +52,19 @@ public class FileService implements IFileService {
 		}else {
 			throw new Exception("文件参数有误");
 		}
+	}
+
+	@Override
+	public boolean removeFile(String fullFileUrl) {
+		// TODO Auto-generated method stub
+		String fileUrl = fullFileUrl.substring(url.length());
+		File file = new File(basePath + fileUrl); 
+		// 路径为文件且不为空则进行删除  
+	    if (file.isFile() && file.exists()) {  
+	        file.delete(); 
+	        return true;
+	    }  
+		return false;
 	}
 
 }

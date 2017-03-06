@@ -28,6 +28,7 @@ public class UserService implements IUserService {
 		// 为新建的用户添加USER权限
 		Role role = generalDao.findById(Role.class, 1);
 		user.getRoles().add(role);
+		user.setUserimg("res/img/user2-160x160.jpg");
 		generalDao.save(user);
 		return false;
 	}
