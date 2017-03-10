@@ -250,16 +250,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
             <li id="homepage" class="active"><a href="#/homepage"><i class='fa fa-link'></i> <span>主页</span></a></li>
-            <li class="treeview-menu"><a href="#"><i class='fa fa-link'></i> <span>公共信息</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a href="#">Link in level 2</a></li>
-                <li><a href="#">Link in level 2</a></li>
-              </ul>
-            </li>
             <li class="treeview">
               <a href="#"><i class='fa fa-link'></i> <span>个人信息</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li id="setting"><a href="#/setting">设置</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#"><i class='fa fa-link'></i> <span>JMS DEMO</span> <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li id="#"><a href="#">设置</a></li>
               </ul>
             </li>
             <li class="treeview">
