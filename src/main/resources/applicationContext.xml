@@ -63,27 +63,35 @@
 		<property name="maxUploadSize" value="2000000000" />
 	</bean>
 	<!-- 学习使用spring消息 jms -->
-	<!-- 真正可以产生Connection的ConnectionFactory，由对应的 JMS服务厂商提供-->   
-    <bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">    
-        <property name="brokerURL" value="tcp://localhost:61616"/>    
-    </bean>
-    <!-- Spring用于管理真正的ConnectionFactory的ConnectionFactory -->    
-    <bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">  
-        <!-- 目标ConnectionFactory对应真实的可以产生JMS Connection的ConnectionFactory -->    
-        <property name="targetConnectionFactory" ref="targetConnectionFactory"/>    
-    </bean> 
-    <!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 -->    
-    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">    
-        <!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->    
-        <property name="connectionFactory" ref="connectionFactory"/> 
-        <property name="defaultDestinationName" value="order-queue"/>   
-    </bean> 
-    <!-- 消息监听容器 --> 
-    <jms:annotation-driven />      
-    <bean id="jmsListenerContainerFactory"  class="org.springframework.jms.config.DefaultJmsListenerContainerFactory"> 
-        <property name="connectionFactory" ref="connectionFactory" /> 
-        <property name="concurrency" value="1-1" />    
-    </bean>
+	<!-- 真正可以产生Connection的ConnectionFactory，由对应的 JMS服务厂商提供 -->
+	<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616" />
+		<!-- 列出允许传递ObjectMessage的对象名单 只能设置为项目名，而不能设置项目底下的包名（不知道为什么）-->
+		<property name="trustedPackages">
+			<list>
+				<value>com.demo.spring_web</value>
+			</list>
+		</property>
+	</bean>
+	<!-- Spring用于管理真正的ConnectionFactory的ConnectionFactory -->
+	<bean id="connectionFactory"
+		class="org.springframework.jms.connection.SingleConnectionFactory">
+		<!-- 目标ConnectionFactory对应真实的可以产生JMS Connection的ConnectionFactory -->
+		<property name="targetConnectionFactory" ref="targetConnectionFactory" />
+	</bean>
+	<!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
+		<property name="connectionFactory" ref="connectionFactory" />
+		<!-- <property name="defaultDestinationName" value="order-queue"/> -->
+	</bean>
+	<!-- 消息监听容器 -->
+	<jms:annotation-driven />
+	<bean id="jmsListenerContainerFactory"
+		class="org.springframework.jms.config.DefaultJmsListenerContainerFactory">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="concurrency" value="1-1" />
+	</bean>
 	<!-- 开启事务管理注解 -->
 	<aop:aspectj-autoproxy />
 	<tx:annotation-driven />
