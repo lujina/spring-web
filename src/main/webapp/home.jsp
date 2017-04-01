@@ -256,12 +256,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li id="setting"><a href="#/setting">设置</a></li>
               </ul>
             </li>
-            <li class="treeview">
-              <a href="#"><i class='fa fa-link'></i> <span>JMS DEMO</span> <i class="fa fa-angle-left pull-right"></i></a>
-              <ul class="treeview-menu">
-                <li id="#"><a href="#">设置</a></li>
-              </ul>
-            </li>
+            <li id="jms_demo"><a href="#/jms_demo"><i class="fa fa-link"></i> <span>JMS DEMO</span></a></li>
             <li class="treeview">
               <a href="#"><i class='fa fa-link'></i> <span>权限管理</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">

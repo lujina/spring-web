@@ -13,15 +13,15 @@ define(function(require,exports,module) {
 		
 		this.refresh = function(){
 			this.curUrl = location.hash.slice(1) || '/homepage';
-			// $('li.active').removeClass('active');
-			// $('ul.menu-open').removeClass('menu-open');
-			// var activeLi=$('#' + this.curUrl.slice(1));
-			// //渲染菜单
-			// while(activeLi.length != 0){
-			// 	$(activeLi).addClass('active');
-			// 	$(activeLi).children('ul').addClass('menu-open');
-			// 	activeLi = $(activeLi).parent('ul').parent('li');
-			// }
+			$('li.active').removeClass('active');
+			$('ul.menu-open').removeClass('menu-open');
+			var activeLi=$('#' + this.curUrl.slice(1));
+			//渲染菜单
+			while(activeLi.length != 0){
+				$(activeLi).addClass('active');
+				$(activeLi).children('ul').addClass('menu-open');
+				activeLi = $(activeLi).parent('ul').parent('li');
+			}
 			this.routes[this.curUrl]();
 		};
 		
@@ -40,6 +40,8 @@ define(function(require,exports,module) {
 			$('#page-content').load('homepage.html');
 		}).route('/setting',function(){
 			$('#page-content').load('setting.html');
+		}).route('/jms_demo',function(){
+			$('#page-content').load('jms_demo.html');
 		});
 	};
 

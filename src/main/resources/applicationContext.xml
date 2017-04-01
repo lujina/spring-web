@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jms="http://www.springframework.org/schema/jms"
 	xsi:schemaLocation="  
          http://www.springframework.org/schema/beans  
          http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
@@ -10,7 +11,9 @@
          http://www.springframework.org/schema/aop    
          http://www.springframework.org/schema/aop/spring-aop-4.0.xsd    
          http://www.springframework.org/schema/tx    
-         http://www.springframework.org/schema/tx/spring-tx.xsd">
+         http://www.springframework.org/schema/tx/spring-tx.xsd
+         http://www.springframework.org/schema/jms
+         http://www.springframework.org/schema/jms/spring-jms.xsd">
 
 	<!-- 自动扫面注解包 -->
 	<context:annotation-config />
@@ -59,6 +62,7 @@
 		<property name="defaultEncoding" value="UTF-8" />
 		<property name="maxUploadSize" value="2000000000" />
 	</bean>
+	<!-- 学习使用spring消息 jms -->
 	<!-- 真正可以产生Connection的ConnectionFactory，由对应的 JMS服务厂商提供-->   
     <bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">    
         <property name="brokerURL" value="tcp://localhost:61616"/>    
@@ -72,12 +76,14 @@
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">    
         <!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->    
         <property name="connectionFactory" ref="connectionFactory"/> 
-        <property name="defautDestinationName" value="order-queue"/>   
+        <property name="defaultDestinationName" value="order-queue"/>   
     </bean> 
-    <!-- 消息监听容器 -->    
-    <bean id="jmsContainer"  class="org.springframework.jms.listener.DefaultMessageListenerContainer"> 
-        <property name="connectionFactory" ref="connectionFactory" />    
-    </bean>   
+    <!-- 消息监听容器 --> 
+    <jms:annotation-driven />      
+    <bean id="jmsListenerContainerFactory"  class="org.springframework.jms.config.DefaultJmsListenerContainerFactory"> 
+        <property name="connectionFactory" ref="connectionFactory" /> 
+        <property name="concurrency" value="1-1" />    
+    </bean>
 	<!-- 开启事务管理注解 -->
 	<aop:aspectj-autoproxy />
 	<tx:annotation-driven />

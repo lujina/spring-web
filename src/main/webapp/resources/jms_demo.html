@@ -1,0 +1,73 @@
+<head>
+    <link href="res/plugins/datatables/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <style>
+      .form-control{
+        display:inline;
+        width:60%;
+      } 
+    </style>
+</head>
+<section class="content-header">
+  <h1>
+    JMS DEMO
+    <small>欢迎</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li>JMS DEMO</li>
+    <li>Here</li>
+  </ol>
+</section>
+<section class="content">
+	 <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">产品订单状态</h3>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <table id="order" class="table table-bordered table-hover">
+          	<thead>
+	            <tr>
+	              <th>ID</th>
+	              <th>名称</th>
+	              <th>状态</th>
+	            </tr>
+          	</thead>
+          	<tbody>
+          	</tbody>
+          </table>
+        </div><!-- /.box-body -->
+        <div class="box-footer clearfix">
+          <a data-toggle="modal" data-target="#productOrder">购买更多</a>
+        </div>
+     </div><!-- /.box -->
+</section>
+<div class="modal" aria-hidden="true" id="productOrder">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">产品订单页</h4>
+      </div>
+      <div class="modal-body">
+        <form action="back/order/new" method="post">
+           <div class="form-group">
+              <label class="col-lg-4" for="productName">产品名</label>
+              <input type="text" class="form-control" name="productName" >
+            </div>
+            <div class="form-group">
+              <label class="col-lg-4" for="quantity">数 量</label>
+              <input type="text" class="form-control" name="quantity" >
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal" name="cancel">取消</button>
+        <button type="button" class="btn btn-primary" name="save">保存</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script type="text/javascript">
+  seajs.use("./res/js/general/jms_demo",function(jmsDemoControl){
+        jmsDemoControl.init();
+    });
+</script>

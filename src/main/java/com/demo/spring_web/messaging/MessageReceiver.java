@@ -21,7 +21,7 @@ public class MessageReceiver {
 	 @Autowired
 	 IOrderService orderService;
 	 
-	 @JmsListener(destination = "ORDER_RESPONSE_QUEUE")
+	 @JmsListener(destination = ORDER_RESPONSE_QUEUE)
 	 public void receiveMessage(final Message<InventoryResponse> message) throws JMSException{
 		 LOG.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		 MessageHeaders headers =  message.getHeaders();

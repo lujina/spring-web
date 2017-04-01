@@ -1,6 +1,5 @@
 package com.demo.spring_web.service.impl;
 
-import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -8,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.demo.spring_web.dao.IGeneralDao;
 import com.demo.spring_web.messaging.MessageSender;
 import com.demo.spring_web.model.InventoryResponse;
 import com.demo.spring_web.model.Order;

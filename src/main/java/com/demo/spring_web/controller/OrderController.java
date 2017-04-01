@@ -1,7 +1,7 @@
 package com.demo.spring_web.controller;
 
 
-import java.util.Map;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +14,7 @@ import com.demo.spring_web.service.IOrderService;
 import com.demo.spring_web.util.ResponseFormat;
 
 @Controller
-@RequestMapping("/order")
+@RequestMapping("/back/order")
 public class OrderController {
 	@Autowired
 	IOrderService orderService;
@@ -35,7 +35,7 @@ public class OrderController {
 	@ResponseBody
 	@RequestMapping(value="/status", method=RequestMethod.GET)
 	public Object checkOrderStatus(){
-		Map<String,Order> orders = orderService.getAllOrders();
-		return ResponseFormat.getResult(0,null);
+		Collection<Order> orders = orderService.getAllOrders().values();
+		return ResponseFormat.getResult(0,orders);
 	}
 }

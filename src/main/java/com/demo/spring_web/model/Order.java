@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Entity;
 
-@Entity
 public class Order implements Serializable{
 	private String id;
 	private String productName;
